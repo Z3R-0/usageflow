@@ -1,3 +1,4 @@
 <Solution>
-  <Project Path="AccountService/AccountService.csproj" />
+  <Project Path="AccountService/AccountService.Api/AccountService.Api.csproj" />
+  <Project Path="AccountService/AccountService.Infrastructure/AccountService.Infrastructure.csproj" Id="d4af2b5e-901f-40fb-aea8-454151442cb8" />
 </Solution>
