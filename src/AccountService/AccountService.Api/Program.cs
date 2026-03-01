@@ -9,7 +9,6 @@ builder.Services.AddSwaggerGen();
 // Modules contain all needed services for this bounded context
 builder.Services.AddAccountModule(builder.Configuration);
 
-
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
