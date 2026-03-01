@@ -6,7 +6,7 @@ public static class AccountsEndpoints {
         var group = app.MapGroup("/accounts")
                        .WithTags("Accounts");
 
-        group.MapPost("/", CreateAccount.Handle);
+        group.MapPost("/create", CreateAccount.Handle);
 
         return app;
     }

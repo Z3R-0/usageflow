@@ -10,8 +10,12 @@ public class AccountDbContext(DbContextOptions<AccountDbContext> options) : DbCo
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         modelBuilder.Entity<Account>(eb => {
             eb.HasKey(a => a.Id);
-            eb.Property(a => a.Name).IsRequired();
+            eb.Property(a => a.Name).IsRequired().HasMaxLength(100);
             eb.Property(a => a.CreatedAt).IsRequired();
+            eb.HasOne(a => a.ApiKey)
+              .WithOne()
+              .HasForeignKey<ApiKey>(k => k.AccountId)
+              .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<ApiKey>(eb => {
@@ -19,10 +23,8 @@ public class AccountDbContext(DbContextOptions<AccountDbContext> options) : DbCo
             eb.Property(k => k.HashedKey).IsRequired();
             eb.Property(k => k.CreatedAt).IsRequired();
             eb.Property(k => k.IsActive).IsRequired();
-            eb.HasOne<Account>()
-              .WithOne()
-              .HasForeignKey<ApiKey>(k => k.AccountId)
-              .OnDelete(DeleteBehavior.Cascade);
+            eb.HasIndex(k => k.HashedKey).IsUnique();
+            eb.HasIndex(k => k.AccountId);
         });
     }
 }
