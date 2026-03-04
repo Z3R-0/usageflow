@@ -1,4 +1,6 @@
 ﻿using AccountService.Infrastructure;
+using AccountService.Repository.Implementations;
+using AccountService.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace AccountService.Api.Extensions;
@@ -7,8 +9,9 @@ public static class ServiceCollectionExtensions {
     public static IServiceCollection AddAccountModule(
             this IServiceCollection services,
             IConfiguration config) {
-        //services.AddScoped<IAccountRepository, SqlAccountRepository>();
-        //services.AddScoped<IApiKeyService, ApiKeyService>();
+        // Register repositories
+        services.AddScoped<IAccountRepository, SqlAccountRepository>();
+        services.AddScoped<IApiKeyRepository, SqlApiKeyRepository>();
 
         services.AddSingleton(TimeProvider.System);
         

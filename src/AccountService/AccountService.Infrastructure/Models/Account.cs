@@ -1,10 +1,18 @@
-﻿namespace AccountService.Infrastructure.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class Account {
-    public required Guid Id { get; set; }
-    public required string Name { get; set; }
-    public required DateTime CreatedAt { get; set; }
+namespace AccountService.Infrastructure.Models;
+
+public class Account : IBaseEntity<Guid> {
+    [Key]
+    public required Guid Id { get; init; }
+    
+    [Required]
+    [MaxLength(100)]
+    public required string Name { get; init; }
+    
+    [Required]
+    public required DateTime CreatedAt { get; init; }
 
     // Navigation property
-    public ApiKey? ApiKey { get; set; }
+    public ApiKey? ApiKey { get; init; }
 }

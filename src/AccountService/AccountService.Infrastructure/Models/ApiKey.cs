@@ -1,12 +1,26 @@
-﻿namespace AccountService.Infrastructure.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class ApiKey {
-    public required Guid Id { get; set; }
-    public required Guid AccountId { get; set; }
-    public required string HashedKey { get; set; }
-    public required DateTime CreatedAt { get; set; }
-    public required bool IsActive { get; set; }
+namespace AccountService.Infrastructure.Models;
+
+public class ApiKey : IBaseEntity<Guid> {
+    [Key]
+    public required Guid Id { get; init; }
+    
+    [Required]
+    [ForeignKey(nameof(Account))]
+    public required Guid AccountId { get; init; }
+    
+    [Required]
+    [MaxLength(36)]
+    public required string HashedKey { get; init; }
+    
+    [Required]
+    public required DateTime CreatedAt { get; init; }
+    
+    [Required]
+    public required bool IsActive { get; init; }
 
     // Navigation property
-    public Account? Account { get; set; }
+    public Account? Account { get; init; }
 }
