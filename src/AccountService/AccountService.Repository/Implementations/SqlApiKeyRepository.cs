@@ -2,11 +2,12 @@
 using AccountService.Infrastructure;
 using AccountService.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Shared.Repository;
 
 namespace AccountService.Repository.Implementations;
 
 public class SqlApiKeyRepository(AccountDbContext dbContext)
-    : BaseRepository<ApiKey, AccountService.Infrastructure.Models.ApiKey>(dbContext), IApiKeyRepository
+    : BaseRepository<ApiKey, AccountService.Infrastructure.Models.ApiKey, AccountDbContext>(dbContext), IApiKeyRepository
 {
     protected override DbSet<AccountService.Infrastructure.Models.ApiKey> GetDbSet() {
         return DbContext.ApiKeys;

@@ -2,11 +2,12 @@
 using AccountService.Infrastructure;
 using AccountService.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Shared.Repository;
 
 namespace AccountService.Repository.Implementations;
 
 public class SqlAccountRepository(AccountDbContext dbContext)
-    : BaseRepository<Account, AccountService.Infrastructure.Models.Account>(dbContext), IAccountRepository
+    : BaseRepository<Account, AccountService.Infrastructure.Models.Account, AccountDbContext>(dbContext), IAccountRepository
 {
     protected override DbSet<AccountService.Infrastructure.Models.Account> GetDbSet() {
         return DbContext.Accounts;

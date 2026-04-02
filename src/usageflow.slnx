@@ -1,6 +1,11 @@
 <Solution>
-  <Project Path="AccountService/AccountService.Api/AccountService.Api.csproj" />
-  <Project Path="AccountService/AccountService.Domain/AccountService.Domain.csproj" />
-  <Project Path="AccountService/AccountService.Infrastructure/AccountService.Infrastructure.csproj" Id="d4af2b5e-901f-40fb-aea8-454151442cb8" />
-  <Project Path="AccountService/AccountService.Repository/AccountService.Repository.csproj" />
+  <Folder Name="/AccountService/">
+    <Project Path="AccountService/AccountService.Api/AccountService.Api.csproj" />
+    <Project Path="AccountService/AccountService.Domain/AccountService.Domain.csproj" />
+    <Project Path="AccountService/AccountService.Infrastructure/AccountService.Infrastructure.csproj" Id="d4af2b5e-901f-40fb-aea8-454151442cb8" />
+    <Project Path="AccountService/AccountService.Repository/AccountService.Repository.csproj" />
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="Shared/Shared.Repository/Shared.Repository.csproj" />
+  </Folder>
 </Solution>

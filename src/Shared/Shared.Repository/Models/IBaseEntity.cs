@@ -1,4 +1,4 @@
-﻿namespace AccountService.Infrastructure.Models;
+﻿namespace Shared.Repository.Models;
 
 public interface IBaseEntity<T>
 {

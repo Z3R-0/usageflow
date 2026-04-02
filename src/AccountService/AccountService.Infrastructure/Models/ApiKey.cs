@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Shared.Repository.Models;
 
 namespace AccountService.Infrastructure.Models;
 

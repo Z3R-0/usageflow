@@ -1,13 +1,17 @@
-﻿using AccountService.Infrastructure;
-using AccountService.Infrastructure.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Shared.Repository.Models;
 
-namespace AccountService.Repository;
+namespace Shared.Repository;
 
-public abstract class BaseRepository<TDomain, TInfra>(AccountDbContext dbContext)
+/// <summary>
+/// Generic base repository providing common CRUD operations for domain entities.
+/// Implementations should inherit from this class and their specific IRepository interface
+/// </summary>
+public abstract class BaseRepository<TDomain, TInfra, TContext>(TContext dbContext)
     where TInfra : class, IBaseEntity<Guid>
+    where TContext : DbContext
 {
-    protected readonly AccountDbContext DbContext = dbContext;
+    protected readonly TContext DbContext = dbContext;
 
     protected abstract DbSet<TInfra> GetDbSet();
 

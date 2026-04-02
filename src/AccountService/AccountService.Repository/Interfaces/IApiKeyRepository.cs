@@ -1,14 +1,12 @@
 ﻿using AccountService.Domain;
+using Shared.Repository;
 
 namespace AccountService.Repository.Interfaces;
 
-public interface IApiKeyRepository {
-    Task<ApiKey?> GetByIdAsync(Guid id);
+public interface IApiKeyRepository : IRepository<ApiKey>
+{
     Task<ApiKey?> GetByHashedKeyAsync(string hashedKey);
     Task<ApiKey?> GetByAccountIdAsync(Guid accountId);
-    Task<ApiKey> CreateAsync(ApiKey apiKey);
-    Task<ApiKey> UpdateAsync(ApiKey apiKey);
-    Task DeleteAsync(Guid id);
     Task<IEnumerable<ApiKey>> GetAllByAccountIdAsync(Guid accountId);
 }
 
